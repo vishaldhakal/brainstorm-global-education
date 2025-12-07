@@ -1,0 +1,228 @@
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { 
+  Target, Eye, CheckCircle, Heart, 
+  GraduationCap, Globe, ArrowRight 
+} from "lucide-react";
+import Image from "next/image";
+
+const teamMembers = [
+  {
+    name: "Rajesh Sharma",
+    role: "Founder & CEO",
+    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Rajesh",
+    experience: "15+ years in education",
+  },
+  {
+    name: "Sunita Poudel",
+    role: "Head of Counseling",
+    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sunita",
+    experience: "10+ years experience",
+  },
+  {
+    name: "Kiran Basnet",
+    role: "Visa Specialist",
+    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Kiran",
+    experience: "8+ years experience",
+  },
+  {
+    name: "Maya Tamang",
+    role: "IELTS Trainer",
+    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Maya",
+    experience: "12+ years teaching",
+  },
+];
+
+const values = [
+  {
+    icon: Heart,
+    title: "Student-First Approach",
+    description: "Every decision we make is guided by what's best for our students' academic and career goals.",
+  },
+  {
+    icon: CheckCircle,
+    title: "Transparency",
+    description: "We believe in honest, clear communication about opportunities, costs, and expectations.",
+  },
+  {
+    icon: GraduationCap,
+    title: "Excellence",
+    description: "We strive for the highest standards in counseling, training, and student support.",
+  },
+  {
+    icon: Globe,
+    title: "Global Perspective",
+    description: "Our international network ensures students get the best opportunities worldwide.",
+  },
+];
+
+const About = () => {
+  return (
+    <>
+      {/* Hero Section */}
+      <section className=" py-16 md:py-24">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="max-w-3xl">
+            <span className="inline-block bg-accent text-accent-foreground px-4 py-1 text-sm font-medium mb-4">
+              About Us
+            </span>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+              Empowering Dreams, Shaping Futures Since 2015
+            </h1>
+            <p className="text-lg text-muted-foreground mb-8">
+              Brainstorm Global Education is Nepal&apos;s trusted partner for international education. 
+              We&apos;ve helped thousands of students achieve their dreams of studying at top universities worldwide.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <Button asChild size="lg" className="shadow-sm">
+                <Link href="/contact">Get Started <ArrowRight className="ml-2 w-5 h-5" /></Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Mission & Vision */}
+      <section className="py-16 md:py-24 bg-background">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-card border-2 border-border p-8">
+              <div className="w-12 h-12 bg-primary flex items-center justify-center mb-4">
+                <Target className="w-6 h-6 text-primary-foreground" />
+              </div>
+              <h2 className="text-2xl font-bold mb-4">Our Mission</h2>
+              <p className="text-muted-foreground">
+                To provide comprehensive, honest, and professional guidance to students 
+                aspiring to study abroad, ensuring they make informed decisions and 
+                successfully achieve their educational and career goals.
+              </p>
+            </div>
+            <div className="bg-card border-2 border-border p-8">
+              <div className="w-12 h-12 bg-primary flex items-center justify-center mb-4">
+                <Eye className="w-6 h-6 text-primary-foreground" />
+              </div>
+              <h2 className="text-2xl font-bold mb-4">Our Vision</h2>
+              <p className="text-muted-foreground">
+                To be Nepal&apos;s most trusted and respected education consultancy, 
+                known for our integrity, expertise, and unwavering commitment to 
+                student success in the global academic arena.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Story */}
+      <section className="py-16 md:py-24">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <span className="inline-block bg-accent text-accent-foreground px-4 py-1 text-sm font-medium mb-4">
+                Our Story
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                A Decade of Excellence in Education Consulting
+              </h2>
+              <div className="space-y-4 text-muted-foreground">
+                <p>
+                  Founded in 2015, Brainstorm Global Education started with a simple mission: 
+                  to help Nepali students access quality education abroad without the confusion 
+                  and stress that often comes with the process.
+                </p>
+                <p>
+                  What began as a small office in Kathmandu has grown into one of Nepal&apos;s 
+                  leading education consultancies, with partnerships spanning over 100 universities 
+                  across USA, UK, Australia, Canada, and New Zealand.
+                </p>
+                <p>
+                  Today, we&apos;re proud to have helped more than 5,000 students achieve their 
+                  study abroad dreams, with a visa success rate of over 98%.
+                </p>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="bg-card border-2 border-border p-6 text-center">
+                <p className="text-4xl font-bold text-primary mb-2">2015</p>
+                <p className="text-sm text-muted-foreground">Year Founded</p>
+              </div>
+              <div className="bg-card border-2 border-border p-6 text-center">
+                <p className="text-4xl font-bold text-primary mb-2">5000+</p>
+                <p className="text-sm text-muted-foreground">Students Placed</p>
+              </div>
+              <div className="bg-card border-2 border-border p-6 text-center">
+                <p className="text-4xl font-bold text-primary mb-2">100+</p>
+                <p className="text-sm text-muted-foreground">Partner Universities</p>
+              </div>
+              <div className="bg-card border-2 border-border p-6 text-center">
+                <p className="text-4xl font-bold text-primary mb-2">98%</p>
+                <p className="text-sm text-muted-foreground">Visa Success Rate</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Values */}
+      <section className="py-16 md:py-24 bg-background">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12">
+            <span className="inline-block bg-secondary text-secondary-foreground px-4 py-1 text-sm font-medium mb-4">
+              Our Values
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">What We Stand For</h2>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {values.map((value, index) => (
+              <div key={index} className="bg-card border-2 border-border p-6 text-center">
+                <div className="w-12 h-12 bg-primary flex items-center justify-center mx-auto mb-4">
+                  <value.icon className="w-6 h-6 text-primary-foreground" />
+                </div>
+                <h3 className="font-bold text-lg mb-2">{value.title}</h3>
+                <p className="text-sm text-muted-foreground">{value.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Team Section */}
+      <section className="py-16 md:py-24 ">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12">
+            <span className="inline-block bg-accent text-accent-foreground px-4 py-1 text-sm font-medium mb-4">
+              Our Team
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Meet Our Experts</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Our team of experienced counselors and trainers are dedicated to helping you succeed.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {teamMembers.map((member, index) => (
+              <div key={index} className="bg-card border-2 border-border overflow-hidden group">
+                <div className="aspect-square  p-8">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    width={200}
+                    height={200}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <div className="p-4 text-center">
+                  <h3 className="font-bold text-lg">{member.name}</h3>
+                  <p className="text-primary text-sm font-medium">{member.role}</p>
+                  <p className="text-xs text-muted-foreground mt-1">{member.experience}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
+      </>
+  );
+};
+
+export default About;

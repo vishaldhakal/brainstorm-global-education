@@ -1,0 +1,269 @@
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { 
+  CheckCircle, Clock, Users, Award, BookOpen, 
+  Target, Calendar, ArrowRight, Phone 
+} from "lucide-react";
+import ieltsImage from "@/components/assets/ielts-class.jpg";
+import Image from "next/image";
+
+const features = [
+  "Expert Trainers with 10+ years experience",
+  "Small batch sizes (max 15 students)",
+  "Comprehensive study materials included",
+  "Regular mock tests with feedback",
+  "Flexible morning & evening batches",
+  "Free retake within 3 months",
+];
+
+const courses = [
+  {
+    title: "IELTS Academic",
+    duration: "6-8 Weeks",
+    price: "NPR 15,000",
+    features: [
+      "All 4 modules: Reading, Writing, Listening, Speaking",
+      "20+ full practice tests",
+      "One-on-one speaking sessions",
+      "Band prediction tests",
+      "Study materials included",
+    ],
+  },
+  {
+    title: "IELTS General",
+    duration: "6-8 Weeks",
+    price: "NPR 12,000",
+    features: [
+      "Focus on General Training modules",
+      "Immigration-focused preparation",
+      "Real exam simulation",
+      "Weekly progress assessments",
+      "Certificate of completion",
+    ],
+  },
+  {
+    title: "PTE Academic",
+    duration: "4-6 Weeks",
+    price: "NPR 18,000",
+    features: [
+      "Computer-based test training",
+      "AI-scored practice sessions",
+      "Speaking & writing templates",
+      "Time management strategies",
+      "Score improvement guarantee",
+    ],
+  },
+];
+
+const stats = [
+  { icon: Users, value: "2000+", label: "Students Trained" },
+  { icon: Target, value: "7.5+", label: "Avg. Band Score" },
+  { icon: Award, value: "95%", label: "Success Rate" },
+  { icon: BookOpen, value: "50+", label: "Practice Tests" },
+];
+
+const IeltsPte = () => {
+  return (
+    <>
+      {/* Hero Section */}
+      <section className=" py-16 md:py-24">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <span className="inline-block bg-accent text-accent-foreground px-4 py-1 text-sm font-medium mb-4">
+                Language Preparation
+              </span>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">
+                IELTS & PTE Preparation Classes
+              </h1>
+              <p className="text-lg text-muted-foreground mb-8">
+                Achieve your target score with our expert-led preparation courses. 
+                Comprehensive training for both IELTS and PTE with proven success rates.
+              </p>
+              <div className="grid grid-cols-2 gap-4 mb-8">
+                {features.slice(0, 4).map((feature, index) => (
+                  <div key={index} className="flex items-center gap-2 text-sm">
+                    <CheckCircle className="w-4 h-4 text-primary shrink-0" />
+                    <span>{feature}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button asChild size="lg">
+                  <Link href="/contact">
+                    Enroll Now <ArrowRight className="ml-2 w-5 h-5" />
+                  </Link>
+                </Button>
+                <Button asChild variant="outline" size="lg" className="border-2">
+                  <a href="tel:+9771234567890">
+                    <Phone className="mr-2 w-5 h-5" /> Call for Details
+                  </a>
+                </Button>
+              </div>
+            </div>
+            <div className="relative hidden lg:block">
+              <Image
+                src={ieltsImage}
+                width={500}
+                height={500}
+                alt="IELTS and PTE preparation class"
+                className="w-full h-auto rounded-lg shadow-lg"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats */}
+      <section className="py-12 bg-background border-y-2 border-border">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {stats.map((stat, index) => (
+              <div key={index} className="text-center">
+                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mx-auto mb-3">
+                  <stat.icon className="w-6 h-6 text-primary-foreground" />
+                </div>
+                <p className="text-3xl font-bold text-primary">{stat.value}</p>
+                <p className="text-sm text-muted-foreground">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Course Cards */}
+      <section className="py-16 md:py-24 bg-background">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12">
+            <span className="inline-block bg-secondary text-secondary-foreground px-4 py-1 text-sm font-medium mb-4">
+              Our Courses
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Choose Your Program
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Whether you need IELTS for university admission or PTE for faster results, 
+              we have the right course for you.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {courses.map((course, index) => (
+              <div key={index} className="bg-card border border-border rounded-lg overflow-hidden group hover:shadow-md hover:-translate-y-1 transition-all">
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-2">{course.title}</h3>
+                  <div className="flex items-center gap-4 mb-4 text-sm text-muted-foreground">
+                    <span className="flex items-center gap-1">
+                      <Clock className="w-4 h-4" /> {course.duration}
+                    </span>
+                  </div>
+                  <div className="mb-6">
+                    <span className="text-3xl font-bold text-primary">{course.price}</span>
+                  </div>
+                  <ul className="space-y-3 mb-6">
+                    {course.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-start gap-2 text-sm">
+                        <CheckCircle className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Button asChild className="w-full">
+                    <Link href="/contact">Enroll Now</Link>
+                  </Button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Schedule */}
+      <section className="py-16 md:py-24">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <span className="inline-block bg-accent text-accent-foreground px-4 py-1 text-sm font-medium mb-4">
+                Flexible Timing
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                Class Schedule
+              </h2>
+              <p className="text-muted-foreground mb-8">
+                We offer flexible batch timings to accommodate students with 
+                different schedules. Choose what works best for you.
+              </p>
+              <div className="space-y-4">
+                <div className="flex items-center gap-4 bg-card border border-border rounded-lg p-4">
+                  <Calendar className="w-6 h-6 text-primary" />
+                  <div>
+                    <p className="font-bold">Morning Batch</p>
+                    <p className="text-sm text-muted-foreground">7:00 AM - 9:00 AM (Sun - Fri)</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 bg-card border border-border rounded-lg p-4">
+                  <Calendar className="w-6 h-6 text-primary" />
+                  <div>
+                    <p className="font-bold">Day Batch</p>
+                    <p className="text-sm text-muted-foreground">11:00 AM - 1:00 PM (Sun - Fri)</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 bg-card border border-border rounded-lg p-4">
+                  <Calendar className="w-6 h-6 text-primary" />
+                  <div>
+                    <p className="font-bold">Evening Batch</p>
+                    <p className="text-sm text-muted-foreground">4:00 PM - 6:00 PM (Sun - Fri)</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-8">
+              <h3 className="text-xl font-bold mb-6">What&apos;s Included</h3>
+              <ul className="space-y-4">
+                {features.map((feature, index) => (
+                  <li key={index} className="flex items-center gap-3">
+                    <CheckCircle className="w-5 h-5 text-primary shrink-0" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-8 pt-8 border-t border-border">
+                <p className="text-sm text-muted-foreground mb-4">
+                  New batches start every week. Limited seats available!
+                </p>
+                <Button asChild size="lg" className="w-full">
+                  <Link href="/contact">Register Now</Link>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-16 md:py-24 bg-secondary text-primary-foreground">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            Ready to Achieve Your Target Score?
+          </h2>
+          <p className="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
+            Join our next batch and get expert guidance to ace your IELTS or PTE exam. 
+            Free demo class available!
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button asChild size="lg" variant="secondary">
+              <Link href="/contact">Book Free Demo Class</Link>
+            </Button>
+            <Button asChild size="lg" variant="secondary" className=" text-primary-foreground hover:bg-primary-foreground hover:text-primary">
+              <a href="tel:+9771234567890">
+                <Phone className="mr-2 w-5 h-5" /> +977 1234567890
+              </a>
+            </Button>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default IeltsPte;
