@@ -48,16 +48,16 @@ const Contact = () => {
       {/* HERO */}
 
       <motion.section
-        className="bg-background py-4 md:px-4 md:py-10 space-y-[3rem]"
+        className="bg-background py-4 md:px-4 md:py-10 space-y-12"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
         variants={fadeInUp}
       >
-        <div className="from-primary to-secondary pointer-events-none absolute top-80 -left-20 z-50 h-40 w-40 rounded-full bg-gradient-to-tr opacity-90 blur-3xl"></div>
+        <div className="from-primary to-secondary pointer-events-none absolute top-80 -left-20 z-50 h-40 w-40 rounded-full bg-linear-to-tr opacity-90 blur-3xl"></div>
 
         {/* Top Right */}
-        <div className="from-primary to-secondary pointer-events-none absolute top-80 -right-20 z-50 h-40 w-40 rounded-full bg-gradient-to-tr opacity-90 blur-3xl"></div>
+        <div className="from-primary to-secondary pointer-events-none absolute top-80 -right-20 z-50 h-40 w-40 rounded-full bg-linear-to-tr opacity-90 blur-3xl"></div>
 
 
         <div className="max-w-xl mx-auto text-center">
@@ -175,7 +175,7 @@ const Contact = () => {
 
           <div className="grid md:grid-cols-2 gap-6">
             {/* Visit Us Card */}
-            <div className="group relative bg-gradient-to-br from-primary/5 to-primary/10 p-8 rounded-2xl border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 overflow-hidden">
+            <div className="group relative bg-linear-to-br from-primary/5 to-primary/10 p-8 rounded-2xl border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-500" />
               <div className="relative">
                 <div className="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-primary/30 group-hover:scale-110 transition-all duration-300">
@@ -200,7 +200,7 @@ const Contact = () => {
             </div>
 
             {/* Contact Us Card */}
-            <div className="group relative bg-gradient-to-br from-primary/5 to-primary/10 p-8 rounded-2xl border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 overflow-hidden">
+            <div className="group relative bg-linear-to-br from-primary/5 to-primary/10 p-8 rounded-2xl border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-500" />
               <div className="relative">
                 <div className="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-primary/30 group-hover:scale-110 transition-all duration-300">

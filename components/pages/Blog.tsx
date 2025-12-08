@@ -76,7 +76,7 @@ const Blog = () => {
         </div>
         
         {/* Content */}
-        <div className="relative z-10 max-w-6xl pl-[11.5rem] py-16 md:py-24 ">
+        <div className="relative z-10 max-w-6xl pl-46 py-16 md:py-24 ">
           <div className="max-w-xl">
             <span className="inline-block bg-primary text-primary-foreground px-4 py-1.5 text-sm font-medium rounded mb-6">
               Latest Updates
@@ -107,7 +107,7 @@ const Blog = () => {
                 className="group block mb-16"
             >
                 <article className="grid lg:grid-cols-5 gap-8 items-center cursor-pointer">
-                <div className="lg:col-span-3 relative overflow-hidden rounded-xl aspect-[16/9]">
+                <div className="lg:col-span-3 relative overflow-hidden rounded-xl aspect-video">
                     <Image
                     src={featured.thumbnail_image || "https://images.unsplash.com/photo-1499750310159-5b5f00e9fe59?w=800&fit=crop"}
                     alt={featured.title}
@@ -157,7 +157,7 @@ const Blog = () => {
                 className="group block"
               >
                 <article className="space-y-4 cursor-pointer">
-                  <div className="relative overflow-hidden rounded-xl aspect-[16/9]">
+                  <div className="relative overflow-hidden rounded-xl aspect-video">
                     <Image
                       src={post.thumbnail_image || "https://images.unsplash.com/photo-1499750310159-5b5f00e9fe59?w=800&fit=crop"}
                       alt={post.title}

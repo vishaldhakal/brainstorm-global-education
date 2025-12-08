@@ -9,7 +9,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Send, X } from "lucide-react";
+import { Send } from "lucide-react";
 import { useSubmitContactForm } from "@/hooks/use-contact";
 import { ContactFormData } from "@/types/contact";
 import { motion } from "motion/react";
@@ -77,7 +77,7 @@ export const ContactDialog = ({ children, triggerText = "Contact Us" }: ContactD
           </Button>
         )}
       </DialogTrigger>
-      <DialogContent className="!max-w-3xl max-h-[85vh] overflow-y-auto p-0 gap-0 border-none sm:rounded-3xl bg-white">  
+      <DialogContent className="max-w-3xl! max-h-[85vh] overflow-y-auto p-0 gap-0 border-none sm:rounded-3xl bg-white">  
         <div className="grid md:grid-cols-2 h-full">
           {/* Left side - Image */}
           <div className="hidden md:block relative h-full min-h-[550px]">
