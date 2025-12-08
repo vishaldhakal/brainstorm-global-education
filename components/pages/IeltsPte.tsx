@@ -1,8 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { 
-  CheckCircle, Clock, Users, Award, BookOpen, 
-  Target, Calendar, ArrowRight, Phone 
+  CheckCircle, Clock, Calendar, ArrowRight, Phone 
 } from "lucide-react";
 import ieltsImage from "@/components/assets/ielts-class.jpg";
 import Image from "next/image";
@@ -53,13 +52,6 @@ const courses = [
       "Score improvement guarantee",
     ],
   },
-];
-
-const stats = [
-  { icon: Users, value: "2000+", label: "Students Trained" },
-  { icon: Target, value: "7.5+", label: "Avg. Band Score" },
-  { icon: Award, value: "95%", label: "Success Rate" },
-  { icon: BookOpen, value: "50+", label: "Practice Tests" },
 ];
 
 const IeltsPte = () => {

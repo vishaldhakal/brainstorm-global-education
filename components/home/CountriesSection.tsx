@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import usaImage from "@/components/assets/usa-study.jpg";
 import ukImage from "@/components/assets/uk-study.jpg";
 import australiaImage from "@/components/assets/australia-study.jpg";

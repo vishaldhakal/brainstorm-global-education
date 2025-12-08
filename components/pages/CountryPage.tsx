@@ -15,7 +15,7 @@ import { Separator } from "@/components/ui/separator";
 import InquiryModal from "@/components/InquiryModal";
 import { 
   GraduationCap, DollarSign, Briefcase, Clock, 
-  CheckCircle, ArrowRight, Building, Globe, Award,
+  CheckCircle, ArrowRight, Globe, Award,
   Users, MapPin, Sun, Shield, Heart, Plane, BookOpen,
   TrendingUp, Star, Calendar, Phone, type LucideIcon
 } from "lucide-react";

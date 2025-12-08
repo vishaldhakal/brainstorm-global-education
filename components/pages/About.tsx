@@ -40,8 +40,15 @@ const About = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className=" py-16 md:py-24">
-        <div className="max-w-6xl mx-auto px-2 sm:px-6">
+      <section className="relative overflow-hidden py-16 md:py-24">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 50px, currentColor 50px, currentColor 51px),
+                             repeating-linear-gradient(90deg, transparent, transparent 50px, currentColor 50px, currentColor 51px)`
+          }} />
+        </div>
+        <div className="max-w-6xl mx-auto px-2 sm:px-6 relative">
           <div className="max-w-3xl">
             <span className="inline-block bg-accent text-accent-foreground px-4 py-1 text-sm font-medium mb-4">
               About Us

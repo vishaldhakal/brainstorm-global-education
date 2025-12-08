@@ -159,49 +159,52 @@ const Blog = () => {
           ) : otherPosts.length > 0 ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {otherPosts.map((post) => (
-                <article
+                <Link
                   key={post.id}
-                  className="bg-card border border-border rounded-lg overflow-hidden group hover:shadow-md transition-all flex flex-col h-full"
+                  href={`/blog/${post.slug}`}
+                  className="block h-full group"
                 >
-                  <div className="relative overflow-hidden bg-muted h-48">
-                    {post.thumbnail_image ? (
+                  <article className="bg-card border border-border rounded-lg overflow-hidden hover:shadow-md transition-all flex flex-col h-full">
+                    <div className="relative overflow-hidden bg-muted h-48">
+                      {post.thumbnail_image ? (
                         <Image
-                        src={post.thumbnail_image}
-                        alt={post.thumbnail_image_alt_description || post.title}
-                        fill
-                        className="object-cover transition-transform duration-300 group-hover:scale-105"
-                      />
-                    ) : (
+                          src={post.thumbnail_image}
+                          alt={post.thumbnail_image_alt_description || post.title}
+                          fill
+                          className="object-cover transition-transform duration-300 group-hover:scale-105"
+                        />
+                      ) : (
                         <div className="w-full h-full flex items-center justify-center bg-secondary/20">
-                            <ImageIcon className="w-10 h-10 text-muted-foreground" />
+                          <ImageIcon className="w-10 h-10 text-muted-foreground" />
                         </div>
-                    )}
-                    
-                    {post.tags && post.tags.length > 0 && (
-                      <span className="absolute top-3 left-3 bg-background/90 backdrop-blur-sm text-foreground px-2 py-1 text-xs font-medium rounded">
-                        {post.tags[0].name}
-                      </span>
-                    )}
-                  </div>
-                  <div className="p-5 flex flex-col grow">
-                    <h3 className="font-bold text-lg mb-2 line-clamp-2 group-hover:text-primary transition-colors" title={post.title}>
-                      {post.title}
-                    </h3>
-                    <p className="text-muted-foreground text-sm mb-4 line-clamp-2 grow">
-                      {post.meta_description || truncateText(stripHtml(post.content), 100)}
-                    </p>
-                    <div className="flex items-center justify-between text-xs text-muted-foreground mt-auto">
-                      <span className="flex items-center gap-1">
-                        <Calendar className="w-3 h-3" /> {formatDate(post.created_at)}
-                      </span>
-                      {post.time_to_read && (
-                        <span className="flex items-center gap-1">
-                          <Clock className="w-3 h-3" /> {post.time_to_read}
+                      )}
+
+                      {post.tags && post.tags.length > 0 && (
+                        <span className="absolute top-3 left-3 bg-background/90 backdrop-blur-sm text-foreground px-2 py-1 text-xs font-medium rounded">
+                          {post.tags[0].name}
                         </span>
                       )}
                     </div>
-                  </div>
-                </article>
+                    <div className="p-5 flex flex-col grow">
+                      <h3 className="font-bold text-lg mb-2 line-clamp-2 group-hover:text-primary transition-colors" title={post.title}>
+                        {post.title}
+                      </h3>
+                      <p className="text-muted-foreground text-sm mb-4 line-clamp-2 grow">
+                        {post.meta_description || truncateText(stripHtml(post.content), 100)}
+                      </p>
+                      <div className="flex items-center justify-between text-xs text-muted-foreground mt-auto">
+                        <span className="flex items-center gap-1">
+                          <Calendar className="w-3 h-3" /> {formatDate(post.created_at)}
+                        </span>
+                        {post.time_to_read && (
+                          <span className="flex items-center gap-1">
+                            <Clock className="w-3 h-3" /> {post.time_to_read}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  </article>
+                </Link>
               ))}
             </div>
           ) : !featuredPost && !isLoading ? (

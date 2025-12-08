@@ -1,6 +1,5 @@
-import { ArrowRight, FileText, Search, Plane, GraduationCap, CheckCircle, MessageSquare } from "lucide-react";
+import { FileText, Search, Plane, GraduationCap, CheckCircle, MessageSquare } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 
 const steps = [
   {
