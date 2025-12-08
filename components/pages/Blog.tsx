@@ -1,251 +1,236 @@
 "use client";
 
+import React from "react";
 import Link from "next/link";
-import { Calendar, Clock, ArrowRight, User, Image as ImageIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { BlogAuthor } from "@/types/blog";
 import { useBlogs } from "@/hooks/use-blog";
-import { Skeleton } from "@/components/ui/skeleton";
-import { truncateText, stripHtml } from "@/lib/text-utils";
+import { Calendar, Clock, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { format } from "date-fns";
+import { Skeleton } from "@/components/ui/skeleton";
+import { motion, Variants } from "motion/react";
 
-const categories = ["All", "Study Guide", "Test Prep", "Scholarships", "Visa Guide", "Immigration"];
+const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" }
+  }
+};
+
 
 const Blog = () => {
-  const { data: blogData, isLoading } = useBlogs();
+  const { data: blogData, isLoading, error } = useBlogs();
   const blogs = blogData?.results || [];
 
-  const featuredPost = blogs.length > 0 ? blogs[0] : null;
-  const otherPosts = blogs.length > 1 ? blogs.slice(1) : [];
+  const featured = blogs.length > 0 ? blogs[0] : null;
+  const others = blogs.length > 1 ? blogs.slice(1) : [];
 
-  const formatDate = (dateString: string) => {
-    try {
-      return format(new Date(dateString), "MMMM d, yyyy");
-    } catch (error) {
-      console.error("Error formatting date:", error);
-      return dateString;
-    }
-  };
+  if (isLoading) {
+      return (
+          <div className="container mx-auto px-4 py-20">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {[1, 2, 3, 4, 5, 6].map((i) => (
+                      <div key={i} className="space-y-4">
+                          <Skeleton className="h-64 w-full rounded-lg" />
+                          <Skeleton className="h-6 w-3/4" />
+                          <Skeleton className="h-4 w-full" />
+                      </div>
+                  ))}
+              </div>
+          </div>
+      );
+  }
 
-  const getAuthorName = (author: BlogAuthor | null) => {
-    if (!author) return "Brainstorm Team";
-    return `${author.first_name} ${author.last_name}`.trim() || author.username || "Brainstorm Team";
-  };
+  if (error) {
+      return (
+          <div className="container mx-auto px-4 py-20 text-center text-red-500">
+              Failed to load blogs. Please try again later.
+          </div>
+      );
+  }
 
   return (
+    // If Layout is not a default export or handles 'children' differently, this might need alloc adjustment.
+    // However, sticking to user's pattern:
     <>
+      {/* Hero with Background Image */}
+      <motion.section 
+        className="relative min-h-[400px] md:min-h-[500px] flex items-center overflow-hidden"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={fadeInUp}
+      >
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/student.jpg"
+            alt="Students studying"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-linear-to-r from-foreground/90 via-foreground/70 to-foreground/40" />
+        </div>
+        
+        {/* Content */}
+        <div className="relative z-10 max-w-6xl pl-[11.5rem] py-16 md:py-24 ">
+          <div className="max-w-xl">
+            <span className="inline-block bg-primary text-primary-foreground px-4 py-1.5 text-sm font-medium rounded mb-6">
+              Latest Updates
+            </span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-background mb-4 leading-tight">
+              Study Abroad<br />Insights & Guides
+            </h1>
+            <p className="text-lg text-background/80 max-w-md">
+              Expert tips and resources to help you navigate your international education journey.
+            </p>
+          </div>
+        </div>
+      </motion.section>
 
+      {/* Articles Grid */}
+      <motion.section 
+        className="py-16 md:py-20 bg-background"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={fadeInUp}
+      >
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          {/* Featured Post */}
+          {featured && (
+            <Link 
+                href={`/blog/${featured.slug}`}
+                className="group block mb-16"
+            >
+                <article className="grid lg:grid-cols-5 gap-8 items-center cursor-pointer">
+                <div className="lg:col-span-3 relative overflow-hidden rounded-xl aspect-[16/9]">
+                    <Image
+                    src={featured.thumbnail_image || "https://images.unsplash.com/photo-1499750310159-5b5f00e9fe59?w=800&fit=crop"}
+                    alt={featured.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute top-4 left-4">
+                    <span className="bg-primary text-primary-foreground px-3 py-1 text-xs font-semibold rounded">
+                        Featured
+                    </span>
+                    </div>
+                </div>
+                <div className="lg:col-span-2 space-y-4">
+                    <span className="text-primary text-sm font-medium">
+                        {featured.tags && featured.tags.length > 0 ? featured.tags[0].name : "Article"}
+                    </span>
+                    <h2 className="text-2xl md:text-3xl font-bold group-hover:text-primary transition-colors leading-tight text-foreground">
+                        {featured.title}
+                    </h2>
+                    <p className="text-muted-foreground line-clamp-3">
+                         {featured.meta_description}
+                    </p>
+                    <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                    <span className="flex items-center gap-1.5">
+                        <Calendar className="w-4 h-4" /> {format(new Date(featured.created_at), "MMM d, yyyy")}
+                    </span>
+                    {featured.time_to_read && (
+                        <span className="flex items-center gap-1.5">
+                            <Clock className="w-4 h-4" /> {featured.time_to_read}
+                        </span>
+                    )}
+                    </div>
+                    <span className="inline-flex items-center text-primary font-medium group-hover:gap-3 gap-2 transition-all pt-2">
+                        Read Article <ArrowRight className="w-4 h-4" />
+                    </span>
+                </div>
+                </article>
+            </Link>
+          )}
 
-      {/* Categories */}
-      <section className="pt-8 bg-background">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex flex-wrap gap-2 justify-start">
-            {categories.map((category, index) => (
-              <button
-                key={index}
-                className={`px-4 py-2 text-sm font-medium rounded-full transition-colors ${
-                  index === 0 
-                    ? "bg-primary text-primary-foreground" 
-                    : "text-black hover:bg-gray-100 cursor-pointer"
-                }`}
+          {/* Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+            {others.map((post) => (
+              <Link
+                key={post.id}
+                href={`/blog/${post.slug}`}
+                className="group block"
               >
-                {category}
-              </button>
+                <article className="space-y-4 cursor-pointer">
+                  <div className="relative overflow-hidden rounded-xl aspect-[16/10]">
+                    <Image
+                      src={post.thumbnail_image || "https://images.unsplash.com/photo-1499750310159-5b5f00e9fe59?w=800&fit=crop"}
+                      alt={post.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    {post.tags && post.tags.length > 0 && (
+                        <div className="absolute top-3 left-3">
+                        <span className="bg-background/90 backdrop-blur-sm text-foreground px-2.5 py-1 text-xs font-medium rounded">
+                            {post.tags[0].name}
+                        </span>
+                        </div>
+                    )}
+                  </div>
+                  <div className="space-y-2">
+                    <h3 className="font-semibold text-lg leading-snug group-hover:text-primary transition-colors line-clamp-2 text-foreground">
+                      {post.title}
+                    </h3>
+                    <p className="text-muted-foreground text-sm line-clamp-2">
+                         {post.meta_description}
+                    </p>
+                    <div className="flex items-center gap-3 text-xs text-muted-foreground pt-1">
+                      <span>{format(new Date(post.created_at), "MMM d, yyyy")}</span>
+                      {post.time_to_read && (
+                          <>
+                            <span>•</span>
+                            <span>{post.time_to_read}</span>
+                          </>
+                      )}
+                    </div>
+                  </div>
+                </article>
+              </Link>
             ))}
           </div>
+          
+           {!isLoading && blogs.length === 0 && !error && (
+            <div className="text-center py-20 text-muted-foreground">
+                No articles found.
+            </div>
+            )}
         </div>
-      </section>
+      </motion.section>
 
-      {/* Featured Post */}
-      <section className="py-8 md:py-8 bg-background">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          {isLoading ? (
-            <div className="grid lg:grid-cols-2 gap-8 items-center">
-              <Skeleton className="w-full h-64 lg:h-80 rounded-lg" />
-              <div className="space-y-4">
-                <Skeleton className="h-6 w-24 rounded-full" />
-                <Skeleton className="h-10 w-3/4" />
-                <Skeleton className="h-20 w-full" />
-                <div className="flex gap-4">
-                  <Skeleton className="h-4 w-24" />
-                  <Skeleton className="h-4 w-24" />
-                  <Skeleton className="h-4 w-24" />
-                </div>
-                <Skeleton className="h-10 w-32" />
-              </div>
-            </div>
-          ) : featuredPost ? (
-            <div className="grid lg:grid-cols-2 gap-8 items-center">
-              <div className="relative overflow-hidden rounded-lg bg-muted">
-                {featuredPost.thumbnail_image ? (
-                  <Image
-                    src={featuredPost.thumbnail_image}
-                    alt={featuredPost.thumbnail_image_alt_description || featuredPost.title}
-                    width={600}
-                    height={400}
-                    className="w-full h-64 lg:h-80 object-cover"
-                  />
-                ) : (
-                   <div className="w-full h-64 lg:h-80 flex items-center justify-center bg-secondary/20">
-                    <ImageIcon className="w-16 h-16 text-muted-foreground" />
-                   </div>
-                )}
-                <span className="absolute top-4 left-4 bg-primary text-primary-foreground px-3 py-1 text-xs font-medium rounded">
-                  Featured
-                </span>
-              </div>
-              <div>
-                {featuredPost.tags && featuredPost.tags.length > 0 && (
-                  <span className="inline-block text-secondary-foreground px-3 py-1 text-xs font-medium rounded mb-4 bg-secondary">
-                    {featuredPost.tags[0].name}
-                  </span>
-                )}
-                <h2 className="text-2xl md:text-3xl font-bold mb-4 line-clamp-2">
-                  {featuredPost.title}
-                </h2>
-                <p className="text-muted-foreground mb-6 line-clamp-3">
-                  {featuredPost.meta_description || truncateText(stripHtml(featuredPost.content), 150)}
-                </p>
-                <div className="flex items-center gap-4 text-sm text-muted-foreground mb-6">
-                  <span className="flex items-center gap-1">
-                    <User className="w-4 h-4" /> {getAuthorName(featuredPost.author)}
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <Calendar className="w-4 h-4" /> {formatDate(featuredPost.created_at)}
-                  </span>
-                  {featuredPost.time_to_read && (
-                    <span className="flex items-center gap-1">
-                      <Clock className="w-4 h-4" /> {featuredPost.time_to_read}
-                    </span>
-                  )}
-                </div>
-                <Button asChild>
-                  <Link href={`/blog/${featuredPost.slug}`}>
-                    Read Article <ArrowRight className="ml-2 w-4 h-4" />
-                  </Link>
-                </Button>
-              </div>
-            </div>
-          ) : (
-            <div className="text-center py-12 text-muted-foreground">
-              No blog posts found.
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* Blog Grid */}
-      <section className="py-12 md:py-16 ">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl font-bold mb-8">Latest Articles</h2>
-          {isLoading ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-               {[...Array(3)].map((_, i) => (
-                 <div key={i} className="bg-card border border-border rounded-lg overflow-hidden h-full">
-                   <Skeleton className="w-full h-48" />
-                   <div className="p-5 space-y-3">
-                     <Skeleton className="h-6 w-3/4" />
-                     <Skeleton className="h-4 w-full" />
-                     <Skeleton className="h-4 w-5/6" />
-                     <div className="flex justify-between pt-2">
-                       <Skeleton className="h-3 w-1/4" />
-                       <Skeleton className="h-3 w-1/4" />
-                     </div>
-                   </div>
-                 </div>
-               ))}
-            </div>
-          ) : otherPosts.length > 0 ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {otherPosts.map((post) => (
-                <Link
-                  key={post.id}
-                  href={`/blog/${post.slug}`}
-                  className="block h-full group"
-                >
-                  <article className="bg-card border border-border rounded-lg overflow-hidden hover:shadow-md transition-all flex flex-col h-full">
-                    <div className="relative overflow-hidden bg-muted h-48">
-                      {post.thumbnail_image ? (
-                        <Image
-                          src={post.thumbnail_image}
-                          alt={post.thumbnail_image_alt_description || post.title}
-                          fill
-                          className="object-cover transition-transform duration-300 group-hover:scale-105"
-                        />
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center bg-secondary/20">
-                          <ImageIcon className="w-10 h-10 text-muted-foreground" />
-                        </div>
-                      )}
-
-                      {post.tags && post.tags.length > 0 && (
-                        <span className="absolute top-3 left-3 bg-background/90 backdrop-blur-sm text-foreground px-2 py-1 text-xs font-medium rounded">
-                          {post.tags[0].name}
-                        </span>
-                      )}
-                    </div>
-                    <div className="p-5 flex flex-col grow">
-                      <h3 className="font-bold text-lg mb-2 line-clamp-2 group-hover:text-primary transition-colors" title={post.title}>
-                        {post.title}
-                      </h3>
-                      <p className="text-muted-foreground text-sm mb-4 line-clamp-2 grow">
-                        {post.meta_description || truncateText(stripHtml(post.content), 100)}
-                      </p>
-                      <div className="flex items-center justify-between text-xs text-muted-foreground mt-auto">
-                        <span className="flex items-center gap-1">
-                          <Calendar className="w-3 h-3" /> {formatDate(post.created_at)}
-                        </span>
-                        {post.time_to_read && (
-                          <span className="flex items-center gap-1">
-                            <Clock className="w-3 h-3" /> {post.time_to_read}
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                  </article>
-                </Link>
-              ))}
-            </div>
-          ) : !featuredPost && !isLoading ? (
-             <div className="text-center py-12 text-muted-foreground">
-              No recent articles found.
-            </div>
-          ) : null}
-
-          {/* Load More */}
-          {/* TODO: Implement pagination load more */}
-          <div className="text-center mt-12">
-            <Button variant="outline" size="lg">
-              Load More Articles
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Newsletter CTA */}
-      {/* <section className="py-16 md:py-20 bg-secondary text-primary-foreground">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">
-            Stay Updated with Study Abroad Tips
+      {/* Newsletter Section */}
+      <motion.section 
+        className="py-16 md:py-20 bg-gray-100  border-t border-border"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={fadeInUp}
+      >
+        <div className="max-w-lg mx-auto px-4 sm:px-6 text-center">
+          <h2 className="text-2xl font-bold mb-3 text-muted-foreground">
+            Stay Updated
           </h2>
-          <p className="text-lg opacity-90 mb-8 max-w-xl mx-auto">
-            Subscribe to our newsletter and get the latest guides, 
-            scholarship updates, and visa tips delivered to your inbox.
+          <p className="text-muted-foreground mb-6">
+            Get the latest tips and guides delivered to your inbox.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto">
+          <form className="flex flex-col sm:flex-row gap-3" onSubmit={(e) => e.preventDefault()}>
             <input
               type="email"
               placeholder="Enter your email"
-              className="flex-1 px-4 py-3 rounded-lg bg-primary-foreground text-foreground placeholder:text-muted-foreground"
+              className="flex-1 px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+              required
             />
-            <Button variant="secondary" size="lg">
+            <Button type="submit">
               Subscribe
             </Button>
-          </div>
+          </form>
         </div>
-      </section> */}
-    </>
+      </motion.section>
+      </>
   );
 };
 

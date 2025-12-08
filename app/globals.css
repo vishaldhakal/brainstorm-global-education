@@ -172,3 +172,16 @@
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes scroll-up {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50%); }
+}
+
+.scroll-up {
+  animation: scroll-up 60s linear infinite;
+}
+
+.scroll-up:hover {
+  animation-play-state: paused;
+}

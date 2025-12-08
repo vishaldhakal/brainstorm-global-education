@@ -27,6 +27,16 @@ import ukImage from "@/components/assets/uk-study.jpg";
 import australiaImage from "@/components/assets/australia-study.jpg";
 import canadaImage from "@/components/assets/canada-study.jpg";
 import newzealandImage from "@/components/assets/newzealand-study.jpg";
+import { motion, Variants } from "motion/react";
+
+const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" }
+  }
+};
 
 const countryData: Record<string, {
   name: string;
@@ -531,7 +541,13 @@ const CountryPage = () => {
       </section>
 
       {/* About Section */}
-      <section className="py-16 md:py-20 bg-background">
+      <motion.section 
+        className="py-16 md:py-20 bg-background"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={fadeInUp}
+      >
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -562,10 +578,17 @@ const CountryPage = () => {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Universities Section */}
-      <section id="universities" className="py-16 md:py-20 ">
+      <motion.section 
+        id="universities" 
+        className="py-16 md:py-20"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={fadeInUp}
+      >
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -591,10 +614,16 @@ const CountryPage = () => {
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Main Content Grid */}
-      <section className="py-16 md:py-20 ">
+      <motion.section 
+        className="py-16 md:py-20"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={fadeInUp}
+      >
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Requirements */}
@@ -792,7 +821,7 @@ const CountryPage = () => {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* CTA */}
       {/* <section className="py-16 md:py-24 bg-secondary text-primary-foreground">
