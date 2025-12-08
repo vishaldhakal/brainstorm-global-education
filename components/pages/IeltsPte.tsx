@@ -1,12 +1,12 @@
 'use client';
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import { 
   CheckCircle, Clock, Calendar, ArrowRight, Phone 
 } from "lucide-react";
 import ieltsImage from "@/components/assets/ielts-class.jpg";
 import Image from "next/image";
 import { motion, Variants } from "motion/react";
+import { ContactDialog } from "@/components/popup/contact";
 
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -98,11 +98,11 @@ const IeltsPte = () => {
                 ))}
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button asChild size="lg">
-                  <Link href="/contact">
+                <ContactDialog triggerText="Enroll Now">
+                  <Button size="lg">
                     Enroll Now <ArrowRight className="ml-2 w-5 h-5" />
-                  </Link>
-                </Button>
+                  </Button>
+                </ContactDialog>
                 <Button asChild variant="outline" size="lg" className="">
                   <a href="tel:+9771234567890">
                     <Phone className="mr-2 w-5 h-5" /> Call for Details
@@ -166,9 +166,11 @@ const IeltsPte = () => {
                       </li>
                     ))}
                   </ul>
-                  <Button asChild className="w-full">
-                    <Link href="/contact">Enroll Now</Link>
-                  </Button>
+                  <ContactDialog triggerText="Enroll Now">
+                    <Button className="w-full">
+                      Enroll Now
+                    </Button>
+                  </ContactDialog>
                 </div>
               </div>
             ))}
@@ -235,9 +237,11 @@ const IeltsPte = () => {
                 <p className="text-sm text-muted-foreground mb-4">
                   New batches start every week. Limited seats available!
                 </p>
-                <Button asChild size="lg" className="w-full">
-                  <Link href="/contact">Register Now</Link>
-                </Button>
+                <ContactDialog triggerText="Register Now">
+                  <Button size="lg" className="w-full">
+                    Register Now
+                  </Button>
+                </ContactDialog>
               </div>
             </div>
           </div>

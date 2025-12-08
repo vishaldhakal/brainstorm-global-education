@@ -7,6 +7,7 @@ import { ArrowRight, CheckCircle } from "lucide-react";
 import heroImage from "@/components/assets/hero-students.jpg";
 import Image from "next/image";
 import { motion, Variants } from "motion/react";
+import { ContactDialog } from "@/components/popup/contact";
 
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -59,11 +60,11 @@ const HeroSection = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-10">
-              <Button asChild size="lg" className="transition-all text-base">
-                <Link href="/contact">
+              <ContactDialog triggerText="Book Free Consultation">
+                <Button size="lg" className="transition-all text-base">
                   Book Free Consultation <ArrowRight className="ml-2 w-5 h-5" />
-                </Link>
-              </Button>
+                </Button>
+              </ContactDialog>
               <Button asChild variant="outline" size="lg" className="text-base ">
                 <Link href="/about">Learn More About Us</Link>
               </Button>

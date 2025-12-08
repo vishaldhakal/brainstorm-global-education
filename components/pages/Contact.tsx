@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { Button } from "@/components/ui/button";
 import { Phone, MapPin, Send } from "lucide-react";
@@ -8,11 +8,11 @@ import { motion, Variants } from "motion/react";
 
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 30 },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: "easeOut" }
-  }
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
 };
 
 const Contact = () => {
@@ -46,19 +46,24 @@ const Contact = () => {
   return (
     <>
       {/* HERO */}
-      <motion.section 
-        className="bg-background py-4 md:px-4 md:py-10 space-y-[5rem]"
+
+      <motion.section
+        className="bg-background py-4 md:px-4 md:py-10 space-y-[3rem]"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
         variants={fadeInUp}
       >
-        <div className="max-w-xl mx-auto">
-          
-          <h1 className="text-3xl md:text-4xl font-bold px-8">
+        <div className="from-primary to-secondary pointer-events-none absolute top-80 -left-20 z-50 h-40 w-40 rounded-full bg-gradient-to-tr opacity-90 blur-3xl"></div>
+
+        {/* Top Right */}
+        <div className="from-primary to-secondary pointer-events-none absolute top-80 -right-20 z-50 h-40 w-40 rounded-full bg-gradient-to-tr opacity-90 blur-3xl"></div>
+
+
+        <div className="max-w-xl mx-auto text-center">
+          <h1 className="text-3xl md:text-4xl font-bold">
             Let&apos;s Start Your Journey
           </h1>
-         
         </div>
         <div className="max-w-lg mx-auto">
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -132,15 +137,26 @@ const Contact = () => {
               </label>
             </div>
 
-            <Button type="submit" size="lg" disabled={isPending} className="rounded-lg w-full">
-              {isPending ? "Sending..." : <>Submit Inquiry <Send className="ml-2 w-4 h-4" /></>}
+            <Button
+              type="submit"
+              size="lg"
+              disabled={isPending}
+              className="rounded-lg w-full"
+            >
+              {isPending ? (
+                "Sending..."
+              ) : (
+                <>
+                  Submit Inquiry <Send className="ml-2 w-4 h-4" />
+                </>
+              )}
             </Button>
           </form>
         </div>
       </motion.section>
 
       {/* CONTACT INFO CARDS */}
-      <motion.section 
+      <motion.section
         className="py-16 md:py-24 bg-background"
         initial="hidden"
         whileInView="visible"
@@ -149,12 +165,14 @@ const Contact = () => {
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Get in Touch</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Get in Touch
+            </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Have questions? We&apos;re here to help you every step of the way.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 gap-6">
             {/* Visit Us Card */}
             <div className="group relative bg-gradient-to-br from-primary/5 to-primary/10 p-8 rounded-2xl border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 overflow-hidden">
@@ -165,11 +183,17 @@ const Contact = () => {
                 </div>
                 <h3 className="font-bold text-xl mb-3">Visit Our Office</h3>
                 <p className="text-muted-foreground leading-relaxed mb-2">
-                  Putalisadak, Kathmandu<br />Nepal
+                  Putalisadak, Kathmandu
+                  <br />
+                  Nepal
                 </p>
                 <p className="text-sm text-muted-foreground/80 mt-4 pt-4 border-t border-border">
-                  <span className="font-semibold text-foreground">Office Hours:</span><br />
-                  Sun - Fri: 9:00 AM - 6:00 PM<br />
+                  <span className="font-semibold text-foreground">
+                    Office Hours:
+                  </span>
+                  <br />
+                  Sun - Fri: 9:00 AM - 6:00 PM
+                  <br />
                   Saturday: Closed
                 </p>
               </div>
@@ -185,16 +209,22 @@ const Contact = () => {
                 <h3 className="font-bold text-xl mb-3">Contact Us</h3>
                 <div className="space-y-3">
                   <div>
-                    <p className="text-sm font-semibold text-foreground mb-1">Phone</p>
+                    <p className="text-sm font-semibold text-foreground mb-1">
+                      Phone
+                    </p>
                     <p className="text-muted-foreground">
-                      +977 1234567890<br />
+                      +977 1234567890
+                      <br />
                       +977 9876543210
                     </p>
                   </div>
                   <div className="pt-3 border-t border-border">
-                    <p className="text-sm font-semibold text-foreground mb-1">Email</p>
+                    <p className="text-sm font-semibold text-foreground mb-1">
+                      Email
+                    </p>
                     <p className="text-muted-foreground">
-                      info@brainstorm.edu.np<br />
+                      info@brainstorm.edu.np
+                      <br />
                       apply@brainstorm.edu.np
                     </p>
                   </div>
@@ -204,8 +234,6 @@ const Contact = () => {
           </div>
         </div>
       </motion.section>
-
-      
     </>
   );
 };

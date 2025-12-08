@@ -1,0 +1,39 @@
+<svg width="600" height="800" viewBox="0 0 600 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#34D399;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6366F1;stop-opacity:1" />
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="1" stroke-opacity="0.1"/>
+    </pattern>
+  </defs>
+  
+  <rect width="100%" height="100%" fill="url(#grad1)"/>
+  <rect width="100%" height="100%" fill="url(#grid)"/>
+  
+  <!-- Content Container -->
+  <g transform="translate(100, 250)">
+    <!-- Main Circle -->
+    <circle cx="200" cy="150" r="120" fill="white" fill-opacity="0.1"/>
+    <circle cx="200" cy="150" r="90" fill="white" fill-opacity="0.2"/>
+    
+    <!-- Mail Icon -->
+    <path d="M140 130 C140 118.954 148.954 110 160 110 H240 C251.046 110 260 118.954 260 130 V190 C260 201.046 251.046 210 240 210 H160 C148.954 210 140 201.046 140 190 V130 Z" fill="white"/>
+    <path d="M140 130 L200 170 L260 130" stroke="#34D399" stroke-width="4" fill="none"/>
+    
+    <!-- Decor Elements -->
+    <circle cx="80" cy="80" r="10" fill="#6366F1" fill-opacity="0.8">
+      <animate attributeName="cy" values="80;70;80" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="320" cy="50" r="15" fill="#34D399" fill-opacity="0.8">
+      <animate attributeName="cy" values="50;60;50" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <path d="M300 250 L320 230 L340 250" stroke="#6366F1" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.8">
+       <animate attributeName="d" values="M300 250 L320 230 L340 250; M300 240 L320 220 L340 240; M300 250 L320 230 L340 250" dur="3s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  
+  <text x="50%" y="650" font-family="Arial, sans-serif" font-size="24" fill="white" text-anchor="middle" font-weight="bold" letter-spacing="2">LET'S CONNECT</text>
+  <text x="50%" y="680" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle" fill-opacity="0.8">We'd love to hear from you</text>
+</svg>

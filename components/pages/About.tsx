@@ -3,7 +3,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import Link from "next/link";
 import { 
   Target, Eye, CheckCircle, Heart, 
   GraduationCap, Globe, ArrowRight 
@@ -14,6 +13,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { stripHtml, truncateText } from "@/lib/text-utils";
 import { motion, Variants } from "motion/react";
 import CTASection from "../home/CTASection";
+import { ContactDialog } from "@/components/popup/contact";
 
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -69,7 +69,7 @@ const About = () => {
         </div>
         <div className="max-w-6xl mx-auto px-2 sm:px-6 relative">
           <div className="max-w-3xl">
-            <Badge variant="secondary" className="mb-4">
+            <Badge variant="outline" className="mb-4">
               About Us
             </Badge>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
@@ -80,9 +80,11 @@ const About = () => {
               We&apos;ve helped thousands of students achieve their dreams of studying at top universities worldwide.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Button asChild size="lg" className="shadow-sm">
-                <Link href="/contact">Get Started <ArrowRight className="ml-2 w-5 h-5" /></Link>
-              </Button>
+              <ContactDialog triggerText="Get Started">
+                <Button size="lg" className="shadow-sm">
+                  Get Started <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+              </ContactDialog>
             </div>
           </div>
         </div>
@@ -139,7 +141,7 @@ const About = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <Badge variant="secondary" className="mb-4">
+              <Badge variant="outline" className="mb-4">
                 Our Story
               </Badge>
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
@@ -233,7 +235,7 @@ const About = () => {
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
-            <Badge variant="secondary" className="mb-4">
+            <Badge variant="outline" className="mb-4">
               Our Team
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Meet Our Experts</h2>
@@ -257,7 +259,7 @@ const About = () => {
               ))
             ) : (
               (teamMembers || []).map((member) => (
-                <div key={member.id} className="bg-card  border-border overflow-hidden group rounded-lg">
+                <div key={member.id} className="bg-card  border-border overflow-hidden group rounded-lg cursor-pointer">
                   <div className="aspect-square p-8">
                     {member.photo ? (
                       <Image
