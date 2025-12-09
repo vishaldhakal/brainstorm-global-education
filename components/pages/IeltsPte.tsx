@@ -265,29 +265,6 @@ const IeltsPte = () => {
           </div>
         </div>
       </motion.section>
-
-      {/* CTA */}
-      {/* <section className="py-16 md:py-24 bg-secondary text-primary-foreground">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Ready to Achieve Your Target Score?
-          </h2>
-          <p className="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
-            Join our next batch and get expert guidance to ace your IELTS or PTE exam. 
-            Free demo class available!
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" variant="secondary">
-              <Link href="/contact">Book Free Demo Class</Link>
-            </Button>
-            <Button asChild size="lg" variant="secondary" >
-              <a href="tel:+9771234567890">
-                <Phone className="mr-2 w-5 h-5" /> +977 1234567890
-              </a>
-            </Button>
-          </div>
-        </div>
-      </section> */}
     </>
   );
 };

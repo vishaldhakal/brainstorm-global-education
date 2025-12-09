@@ -10,6 +10,8 @@ import TestimonialsSection from "@/components/home/TestimonialsSection";
 import Videos from "@/components/home/videos/videos";
 import CTASection from "@/components/home/CTASection";
 import { motion, Variants } from "motion/react";
+import BlogSection from "../home/blog-section";
+import TeamSection from "../home/team-section";
 
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -67,6 +69,15 @@ const Index = () => {
         viewport={{ once: true, amount: 0.3 }}
         variants={fadeInUp}
       >
+        <BlogSection />
+      </motion.div>
+
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={fadeInUp}
+      >
          <CountriesSection />
       </motion.div>
 
@@ -94,6 +105,7 @@ const Index = () => {
         viewport={{ once: true, amount: 0.3 }}
         variants={fadeInUp}
       >
+        <TeamSection/>
          <CTASection />
       </motion.div>
     </>

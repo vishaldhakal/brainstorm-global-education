@@ -103,7 +103,7 @@ export const BlogDetail: React.FC<BlogDetailProps> = ({ slug }) => {
 
         {/* Main Thumbnail */}
         {blog.thumbnail_image && (
-          <div className="rounded-3xl overflow-hidden h-[300px] md:h-[450px] w-full shadow-lg mb-10 relative">
+          <div className="rounded-3xl overflow-hidden h-[300px] md:h-[450px] max-w-[1100px] mx-auto shadow-lg mb-10 relative">
             <Image
               src={blog.thumbnail_image || defaultImage}
               alt={blog.thumbnail_image_alt_description || blog.title}

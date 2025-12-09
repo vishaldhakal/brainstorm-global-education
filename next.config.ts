@@ -14,6 +14,10 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "brainstorm-global-education.nepdora.baliyoventures.com",
+      },
+      {
+        protocol: "https",
+        hostname: "plus.unsplash.com",
       }
       
     ],

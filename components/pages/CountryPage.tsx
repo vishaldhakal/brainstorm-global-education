@@ -50,6 +50,7 @@ const countryData: Record<string, {
   highlights: string[];
   whyStudy: { icon: LucideIcon; title: string; description: string }[];
   universities: { name: string; ranking: string; location: string }[];
+  popularCities: { name: string; image: string }[];
   costs: { tuition: string; living: string; total: string };
   requirements: string[];
   workRights: string;
@@ -65,7 +66,7 @@ const countryData: Record<string, {
   usa: {
     name: "USA",
     fullName: "United States of America",
-    image: usaImage,
+    image: "https://plus.unsplash.com/premium_photo-1676657955507-b1f993556e80?w=1920&auto=format&fit=crop&q=100",
     tagline: "World-Class Education & Unlimited Opportunities",
     description: "The United States is home to the world's most prestigious universities and offers unparalleled academic opportunities. With diverse programs, cutting-edge research facilities, and a multicultural environment, studying in the USA opens doors to global career opportunities.",
     extendedDescription: "The American education system is renowned for its flexibility, allowing students to explore various subjects before declaring a major. With over 4,500 accredited institutions, you'll find programs tailored to every interest and career goal. The emphasis on research, innovation, and entrepreneurship makes USA the ideal destination for ambitious students.",
@@ -91,6 +92,12 @@ const countryData: Record<string, {
       { name: "University of Texas", ranking: "#38 World", location: "Austin, TX" },
       { name: "NYU", ranking: "#39 World", location: "New York, NY" },
       { name: "UCLA", ranking: "#40 World", location: "Los Angeles, CA" },
+    ],
+    popularCities: [
+      { name: "New York", image: "https://images.unsplash.com/photo-1500916434205-0c77489c6cf7?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+      { name: "Boston", image: "https://images.unsplash.com/photo-1563840111261-8b096fb63b65?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Ym9zdG9ufGVufDB8fDB8fHww" },
+      { name: "San Francisco", image: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?q=80&w=800&auto=format&fit=crop" },
+      { name: "Chicago", image: "https://images.unsplash.com/photo-1494522855154-9297ac14b55f?q=80&w=800&auto=format&fit=crop" },
     ],
     costs: { tuition: "$20,000 - $60,000/year", living: "$15,000 - $25,000/year", total: "$35,000 - $85,000/year" },
     requirements: [
@@ -144,10 +151,10 @@ const countryData: Record<string, {
   uk: {
     name: "UK",
     fullName: "United Kingdom",
-    image: ukImage,
+    image: "https://images.unsplash.com/photo-1562767332-ce0b1e2426bb?w=1920&auto=format&fit=crop&q=100",
     tagline: "Centuries of Academic Excellence",
     description: "The United Kingdom offers world-class education with centuries of academic excellence. UK degrees are globally recognized, and with shorter course durations, you can save both time and money while gaining a prestigious qualification.",
-    extendedDescription: "British universities are known for their rigorous academic standards and innovative teaching methods. The UK&apos;s education system emphasizes critical thinking and independent research, preparing students for global careers. With its rich history, vibrant cities, and diverse culture, the UK offers an unparalleled student experience.",
+    extendedDescription: "British universities are known for their rigorous academic standards and innovative teaching methods. The UK's education system emphasizes critical thinking and independent research, preparing students for global careers. With its rich history, vibrant cities, and diverse culture, the UK offers an unparalleled student experience.",
     highlights: [
       "1-year Master's programs (save time & money)",
       "Globally recognized degrees",
@@ -156,7 +163,7 @@ const countryData: Record<string, {
       "English-speaking environment",
     ],
     whyStudy: [
-      { icon: Clock, title: "Shorter Duration", description: "Complete Master&apos;s in just 1 year, Bachelor&apos;s in 3 years" },
+      { icon: Clock, title: "Shorter Duration", description: "Complete Master's in just 1 year, Bachelor's in 3 years" },
       { icon: Globe, title: "Global Hub", description: "London is a global center for finance, arts, and technology" },
       { icon: Award, title: "Prestige", description: "Home to Oxford, Cambridge, and world-renowned institutions" },
       { icon: Plane, title: "Travel Hub", description: "Easy access to Europe and beyond" },
@@ -170,6 +177,12 @@ const countryData: Record<string, {
       { name: "King's College London", ranking: "#37 World", location: "London" },
       { name: "University of Manchester", ranking: "#32 World", location: "Manchester" },
       { name: "University of Bristol", ranking: "#55 World", location: "Bristol" },
+    ],
+    popularCities: [
+      { name: "London", image: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?q=80&w=800&auto=format&fit=crop" },
+      { name: "Manchester", image: "https://images.unsplash.com/photo-1543832923-44667a44c804?q=80&w=800&auto=format&fit=crop" },
+      { name: "Birmingham", image: "https://plus.unsplash.com/premium_photo-1663133763113-863f93d0420b?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YmlybWluZ2hhbXxlbnwwfHwwfHx8MA%3D%3D" },
+      { name: "Edinburgh", image: "https://images.unsplash.com/photo-1569668444050-b7bc2bfec0c7?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZWRpbmJ1cmdofGVufDB8fDB8fHww" },
     ],
     costs: { tuition: "£12,000 - £38,000/year", living: "£12,000 - £15,000/year", total: "£24,000 - £53,000/year" },
     requirements: [
@@ -190,7 +203,7 @@ const countryData: Record<string, {
       "PhD graduates: 3-year Graduate Route",
       "Average graduate salary: £25,000 - £40,000",
     ],
-    popularCourses: ["Business &amp; Finance", "Law", "Engineering", "Medicine", "Arts &amp; Design", "Computer Science", "Data Analytics", "International Relations"],
+    popularCourses: ["Business & Finance", "Law", "Engineering", "Medicine", "Arts & Design", "Computer Science", "Data Analytics", "International Relations"],
     intakes: ["September/October (Main)", "January/February"],
     visaInfo: "Student Visa required. CAS from university needed for application.",
     visaDetails: [
@@ -223,12 +236,12 @@ const countryData: Record<string, {
   australia: {
     name: "Australia",
     fullName: "Australia",
-    image: australiaImage,
+    image: "https://images.unsplash.com/photo-1624138784614-87fd1b6528f8?w=1920&auto=format&fit=crop&q=100",
     tagline: "World-Class Education with Exceptional Lifestyle",
     description: "Australia combines high-quality education with an exceptional lifestyle. Known for its welcoming culture, stunning landscapes, and strong economy, Australia offers excellent post-study work opportunities and pathways to permanent residency.",
-    extendedDescription: "Australia&apos;s education system is regulated by the government, ensuring consistently high standards across all institutions. The country&apos;s focus on practical learning, industry connections, and research excellence makes it ideal for career-focused students. With unlimited work hours during studies and generous post-study work rights, Australia offers the best of education and opportunity.",
+    extendedDescription: "Australia's education system is regulated by the government, ensuring consistently high standards across all institutions. The country's focus on practical learning, industry connections, and research excellence makes it ideal for career-focused students. With unlimited work hours during studies and generous post-study work rights, Australia offers the best of education and opportunity.",
     highlights: [
-      "7 universities in world&apos;s top 100",
+      "7 universities in world's top 100",
       "Post-study work visa: 2-4 years",
       "High quality of life and safety",
       "Pathway to permanent residency",
@@ -237,7 +250,7 @@ const countryData: Record<string, {
     ],
     whyStudy: [
       { icon: Sun, title: "Amazing Lifestyle", description: "Beautiful beaches, great weather, and outdoor activities" },
-      { icon: Shield, title: "Safe &amp; Welcoming", description: "One of the safest countries with low crime rates" },
+      { icon: Shield, title: "Safe & Welcoming", description: "One of the safest countries with low crime rates" },
       { icon: TrendingUp, title: "PR Pathway", description: "Clear pathway to permanent residency through skilled migration" },
       { icon: Briefcase, title: "Work Rights", description: "Unlimited work hours during studies" },
     ],
@@ -250,6 +263,12 @@ const countryData: Record<string, {
       { name: "University of Queensland", ranking: "#43 World", location: "Brisbane" },
       { name: "University of Adelaide", ranking: "#89 World", location: "Adelaide" },
       { name: "UTS", ranking: "#90 World", location: "Sydney" },
+    ],
+    popularCities: [
+      { name: "Sydney", image: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?q=80&w=800&auto=format&fit=crop" },
+      { name: "Melbourne", image: "https://images.unsplash.com/photo-1514395462725-fb4566210144?q=80&w=800&auto=format&fit=crop" },
+      { name: "Brisbane", image: "https://plus.unsplash.com/premium_photo-1694475701659-444e11e512d9?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YnJpc2JhbmV8ZW58MHx8MHx8fDA%3D" },
+      { name: "Perth", image: "https://images.unsplash.com/photo-1574471101497-d958f6e3ebd4?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
     ],
     costs: { tuition: "AUD 20,000 - 45,000/year", living: "AUD 21,000 - 25,000/year", total: "AUD 41,000 - 70,000/year" },
     requirements: [
@@ -265,13 +284,13 @@ const countryData: Record<string, {
     workRights: "Unlimited work hours during studies. Post-study work visa for 2-4 years.",
     workRightsDetails: [
       "Unlimited work hours for student visa holders",
-      "Post-study work: 2 years (Bachelor&apos;s)",
-      "Post-study work: 3 years (Master&apos;s)",
+      "Post-study work: 2 years (Bachelor's)",
+      "Post-study work: 3 years (Master's)",
       "Post-study work: 4 years (PhD)",
       "Regional areas: Additional 1-2 years",
       "Average salary: AUD 55,000 - 75,000",
     ],
-    popularCourses: ["IT &amp; Computer Science", "Nursing", "Engineering", "Business", "Hospitality", "Accounting", "Education", "Health Sciences"],
+    popularCourses: ["IT & Computer Science", "Nursing", "Engineering", "Business", "Hospitality", "Accounting", "Education", "Health Sciences"],
     intakes: ["February (Main)", "July"],
     visaInfo: "Subclass 500 Student Visa. GTE statement required.",
     visaDetails: [
@@ -306,10 +325,10 @@ const countryData: Record<string, {
   canada: {
     name: "Canada",
     fullName: "Canada",
-    image: canadaImage,
+    image: "https://plus.unsplash.com/premium_photo-1694475481348-7cbe417be129?w=1920&auto=format&fit=crop&q=100",
     tagline: "Quality Education with Clear Immigration Pathways",
     description: "Canada offers world-class education at affordable costs with clear pathways to permanent residency. Known for its safety, multiculturalism, and high quality of life, Canada is an ideal destination for international students.",
-    extendedDescription: "Canadian education is known for its practical approach and industry relevance. The country&apos;s friendly immigration policies make it one of the best destinations for students planning to settle abroad. With affordable tuition compared to US/UK, generous work rights, and a welcoming society, Canada offers exceptional value for international students.",
+    extendedDescription: "Canadian education is known for its practical approach and industry relevance. The country's friendly immigration policies make it one of the best destinations for students planning to settle abroad. With affordable tuition compared to US/UK, generous work rights, and a welcoming society, Canada offers exceptional value for international students.",
     highlights: [
       "Affordable tuition compared to US/UK",
       "PGWP: Up to 3 years post-study work",
@@ -333,6 +352,12 @@ const countryData: Record<string, {
       { name: "Western University", ranking: "#172 World", location: "London, ON" },
       { name: "University of Calgary", ranking: "#182 World", location: "Calgary" },
       { name: "Simon Fraser University", ranking: "#318 World", location: "Vancouver" },
+    ],
+    popularCities: [
+      { name: "Toronto", image: "https://images.unsplash.com/photo-1517935706615-2717063c2225?q=80&w=800&auto=format&fit=crop" },
+      { name: "Vancouver", image: "https://images.unsplash.com/photo-1560275619-4662e36fa65c?q=80&w=800&auto=format&fit=crop" },
+      { name: "Montreal", image: "https://plus.unsplash.com/premium_photo-1697730100119-1f40e797f395?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bW9udHJlYWx8ZW58MHx8MHx8fDA%3D" },
+      { name: "Ottawa", image: "https://plus.unsplash.com/premium_photo-1697730030448-fbfa52261ab6?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8b3R0YXdhfGVufDB8fDB8fHww" },
     ],
     costs: { tuition: "CAD 15,000 - 35,000/year", living: "CAD 12,000 - 18,000/year", total: "CAD 27,000 - 53,000/year" },
     requirements: [
@@ -389,10 +414,10 @@ const countryData: Record<string, {
   "new-zealand": {
     name: "New Zealand",
     fullName: "New Zealand",
-    image: newzealandImage,
+    image: "https://images.unsplash.com/photo-1507699622108-4be3abd695ad?w=1920&auto=format&fit=crop&q=100",
     tagline: "Quality Education in Paradise",
-    description: "New Zealand offers excellent education in a safe, beautiful environment. With a practical approach to learning, generous work rights, and pathways to residency, it&apos;s an increasingly popular choice for international students.",
-    extendedDescription: "New Zealand&apos;s education system emphasizes practical learning and real-world application. The country&apos;s stunning natural beauty, friendly people, and high quality of life make it an attractive destination. With all universities globally ranked and generous post-study work rights, New Zealand offers excellent value for international students seeking both education and adventure.",
+    description: "New Zealand offers excellent education in a safe, beautiful environment. With a practical approach to learning, generous work rights, and pathways to residency, it's an increasingly popular choice for international students.",
+    extendedDescription: "New Zealand's education system emphasizes practical learning and real-world application. The country's stunning natural beauty, friendly people, and high quality of life make it an attractive destination. With all universities globally ranked and generous post-study work rights, New Zealand offers excellent value for international students seeking both education and adventure.",
     highlights: [
       "All 8 universities globally ranked",
       "Post-study work visa: 1-3 years",
@@ -417,6 +442,12 @@ const countryData: Record<string, {
       { name: "University of Waikato", ranking: "#373 World", location: "Hamilton" },
       { name: "AUT", ranking: "#407 World", location: "Auckland" },
     ],
+    popularCities: [
+       { name: "Auckland", image: "https://images.unsplash.com/photo-1595125990323-885cec5217ff?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXVja2xhbmR8ZW58MHx8MHx8fDA%3D" },
+       { name: "Wellington", image: "https://images.unsplash.com/photo-1562620948-7ef06527f430?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8d2VsbGluZ3RvbnxlbnwwfHwwfHx8MA%3D%3D" },
+       { name: "Christchurch", image: "https://images.unsplash.com/photo-1589802829985-817e51171b92?q=80&w=800&auto=format&fit=crop" },
+       { name: "Dunedin", image: "https://images.unsplash.com/photo-1702742711235-d09891952156?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGR1bmVkaW58ZW58MHx8MHx8fDA%3D" },
+    ],
     costs: { tuition: "NZD 22,000 - 35,000/year", living: "NZD 15,000 - 20,000/year", total: "NZD 37,000 - 55,000/year" },
     requirements: [
       "IELTS (5.5-6.5) or equivalent",
@@ -437,7 +468,7 @@ const countryData: Record<string, {
       "Work experience counts for residency",
       "Minimum wage: NZD 22.70/hour",
     ],
-    popularCourses: ["Agriculture", "Environmental Science", "Tourism", "IT", "Engineering", "Film &amp; Animation", "Marine Biology", "Viticulture"],
+    popularCourses: ["Agriculture", "Environmental Science", "Tourism", "IT", "Engineering", "Film & Animation", "Marine Biology", "Viticulture"],
     intakes: ["February (Main)", "July"],
     visaInfo: "Student Visa required. Online application through Immigration NZ.",
     visaDetails: [
@@ -533,20 +564,28 @@ const CountryPage = ({ countrySlug }: { countrySlug?: string }) => {
         </div>
       </motion.section>
 
-      {/* Quick Facts Bar */}
-      <motion.section 
-        className="bg-primary/10 text-primary py-6"
+      {/* Popular Cities Section */}
+      <motion.section
+        className="py-10 sm:py-16 bg-background"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
         variants={fadeInUp}
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center">
-            {data.facts.map((fact, index) => (
-              <div key={index}>
-                <div className="text-xl sm:text-2xl md:text-3xl font-bold">{fact.value}</div>
-                <div className="text-xs sm:text-sm opacity-80">{fact.label}</div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+            {data.popularCities.map((city, index) => (
+              <div key={index} className="group relative overflow-hidden rounded-xl aspect-[4/5] sm:aspect-square">
+                <Image
+                  src={city.image}
+                  alt={city.name}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <h3 className="text-white font-bold text-lg sm:text-xl">{city.name}</h3>
+                </div>
               </div>
             ))}
           </div>
@@ -804,7 +843,7 @@ const CountryPage = ({ countrySlug }: { countrySlug?: string }) => {
           </h2>
           <p className="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
             Book a free consultation with our expert counselors who specialize in {data.name} admissions. 
-            We&apos;ll guide you through every step of the process.
+            We'll guide you through every step of the process.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Button asChild size="lg" variant="secondary">
