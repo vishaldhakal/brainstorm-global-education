@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
@@ -16,12 +15,46 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Brainstorm Global Education",
-  description: "Consultancy",
+// app/layout.tsx (Top-level)
+export const metadata = {
+  metadataBase: new URL("https://brainstorm-global-education.vercel.app"),
+  title: "Brainstorm Global Education — Study Abroad & Student Consultancy",
+  description:
+    "Brainstorm Global Education — expert study abroad consultancy. We help students apply to universities, visas, and scholarship guidance for Canada, Australia, UK, USA and more.",
+  authors: [{ name: "Brainstorm Global Education", email: "info@brainstorm-global-education.vercel.app" }],
+  openGraph: {
+    type: "website",
+    title: "Brainstorm Global Education — Study Abroad Consultancy",
+    description:
+      "Expert guidance for university applications, visas, scholarships and pre-departure support.",
+    url: "https://brainstorm-global-education.vercel.app/",
+    siteName: "Brainstorm Global Education",
+    images: [{ url: "https://brainstorm-global-education.vercel.app/og-image.jpg", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Brainstorm Global Education",
+    description: "Study abroad consultancy — applications, visas, scholarships.",
+    images: ["https://brainstorm-global-education.vercel.app/twitter-og-image.jpg"],
+    site: "@YourTwitterHandle", // optional
+  },
+  robots: { index: true, follow: true },
+  alternates: { canonical: "https://brainstorm-global-education.vercel.app/" },
 };
 
+export const viewport = {
+  initialScale: 1.0,
+  width: "device-width",
+  height: "device-height",
+  minimumScale: 1.0,
+  maximumScale: 1.0,
+  userScalable: "yes",
+};
+
+
 import QueryProvider from "@/components/providers/QueryProvider";
+
+
 
 export default function RootLayout({
   children,
