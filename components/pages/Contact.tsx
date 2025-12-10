@@ -43,6 +43,9 @@ const Contact = () => {
         toast.success("Message sent successfully");
         form.reset();
       },
+      onError: () => {
+        toast.error("Failed to send message");
+      },
     });
   };
 
