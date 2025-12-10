@@ -11,6 +11,16 @@ import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 import { AlertCircle } from "lucide-react";
 import CTASection from "@/components/home/CTASection";
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  TwitterShareButton,
+  TwitterIcon,
+  WhatsappShareButton,
+  WhatsappIcon,
+  LinkedinShareButton,
+  LinkedinIcon,
+} from "next-share"
 
 interface BlogDetailProps {
   slug: string;
@@ -99,6 +109,40 @@ export const BlogDetail: React.FC<BlogDetailProps> = ({ slug }) => {
           <h1 className="text-3xl md:text-2xl lg:text-3xl font-semibold justify-center  text-gray-900 leading-[1.15] mb-4">
             {blog.title}
           </h1>
+          
+          {/* Social Share Buttons */}
+          <div className="flex items-center justify-center gap-3 mt-4">
+            <span className="text-sm text-gray-500 mr-2">Share:</span>
+            <FacebookShareButton
+              url={`${process.env.NEXT_PUBLIC_APP_URL}/latest-updates/${slug}`}
+              quote={blog.title}
+              hashtag={'#brainstorm'}
+            >
+              <FacebookIcon size={32} round />
+            </FacebookShareButton>
+            
+            <TwitterShareButton
+              url={`${process.env.NEXT_PUBLIC_APP_URL}/latest-updates/${slug}`}
+              title={blog.title}
+              hashtags={['brainstorm']}
+            >
+              <TwitterIcon size={32} round />
+            </TwitterShareButton>
+            
+            <WhatsappShareButton
+              url={`${process.env.NEXT_PUBLIC_APP_URL}/latest-updates/${slug}`}
+              title={blog.title}
+            >
+              <WhatsappIcon size={32} round />
+            </WhatsappShareButton>
+            
+            <LinkedinShareButton
+              url={`${process.env.NEXT_PUBLIC_APP_URL}/latest-updates/${slug}`}
+              title={blog.title}
+            >
+              <LinkedinIcon size={32} round />
+            </LinkedinShareButton>
+          </div>
         </div>
 
         {/* Main Thumbnail */}
